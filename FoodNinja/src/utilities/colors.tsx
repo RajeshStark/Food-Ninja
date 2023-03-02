@@ -1,0 +1,1 @@
+export const AppThemeColor = "#4AE188"
