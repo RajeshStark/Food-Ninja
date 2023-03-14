@@ -1,11 +1,15 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import EntryStack from './src/navigation/EntryStack';
+import React from 'react';
+import { StatusBar } from 'react-native';
+import { AuthProvider } from './src/contexts/AuthContext';
+import Router from './src/navigation/EntryStack';
 
-export default function App() {
+export default function App(){
   return (
-    <NavigationContainer>
-      <EntryStack/>
-    </NavigationContainer>
+    <AuthProvider> 
+      <StatusBar backgroundColor={'#fff'} barStyle="dark-content"/>
+      <Router />
+    </AuthProvider>
   );
-}
+};
+
+ App;

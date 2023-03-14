@@ -6,14 +6,15 @@ import {width} from '../utilities/Dimensions';
 type props = {
   title: string;
   onPress: () => void;
+  size?: number;
 };
 
-export default function CustomButton({title, onPress}: props) {
+export default function CustomButton({title, onPress, size}: props) {
   return (
     <Pressable onPress={onPress}>
       <LinearGradient
       colors={['#4AE188', '#31D180', '#18C177']}
-      style={styles.linearGradient}
+      style={[styles.linearGradient, {  width: typeof(size) == 'undefined' ? width * 0.9 : width * size }]}
       >
       <Text style={styles.buttonText}>{title}</Text>
     </LinearGradient>
@@ -23,11 +24,10 @@ export default function CustomButton({title, onPress}: props) {
 
 const styles = StyleSheet.create({
   linearGradient: {
-    padding: 15,
-    margin: 20,
-    width: width * 0.5,
+    padding: 5,
+    marginVertical: 20,
     borderRadius: 20,
-
+    marginHorizontal: 5,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

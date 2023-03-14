@@ -1,42 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from '../screens/Home';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+
+
+import {useAuth} from '../contexts/AuthContext';
 import Splash from '../screens/Splash';
-import Page1 from '../screens/onboarding/page1'
-import Page2 from '../screens/onboarding/page2'
-import Login from '../screens/auth/Login';
+import AppStack  from './AppStack';
+import AuthStack from './Authstack';
 
+const Router = () => {
+  const {authData, loading} = useAuth();
 
-const Stack = createNativeStackNavigator();
-
-function EntryStack() {
-  const [splash, setSplash] = useState(true);
-
- useEffect(() => {
-   const splashtimer = setTimeout(() => {
-    setSplash(false)
-   }, 1500);
- 
-   return () => {
-     clearTimeout(splashtimer)
-   }
- }, [])
- 
-  
+  if (loading) {
+    return <Splash />;
+  }
   return (
-    <Stack.Navigator screenOptions={{headerShown : false}}>
-    
-      {
-        splash ?   <Stack.Screen name="splash" component={Splash} />
-        :
-        <>
-          <Stack.Screen name="page1" component={Page1} />
-          <Stack.Screen name="page2" component={Page2} />
-          <Stack.Screen name="login" component={Login} />
-        </>
-      }
-    </Stack.Navigator>
+    <NavigationContainer>
+      {authData ? <AppStack /> : <AuthStack/>}
+    </NavigationContainer>
   );
-}
+};
 
-export default EntryStack;
+export default Router;
