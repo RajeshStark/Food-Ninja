@@ -1,5 +1,5 @@
 module.exports = {
   HOST: "0.0.0.0",
   PORT: 27017,
-  DB: "budget-tracker_db"
+  DB: "food-ninja_db"
 };

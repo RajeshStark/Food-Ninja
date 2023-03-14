@@ -20,14 +20,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
-    name: "bezkoder-session",
+    name: "foodninja-session",
     secret: "COOKIE_SECRET", // should use as secret environment variable
     httpOnly: true
   })
 );
 
 const db = require("./app/models");
-const Role = db.role;
 
 db.mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
@@ -36,7 +35,6 @@ db.mongoose
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
-    initial();
   })
   .catch(err => {
     console.error("Connection error", err);
@@ -45,7 +43,7 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to budget tracker application." });
+  res.json({ message: "Welcome to food ninja application." });
 });
 
 // routes
@@ -58,38 +56,3 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-function initial() {
-  Role.estimatedDocumentCount((err, count) => {
-    if (!err && count === 0) {
-      new Role({
-        name: "user"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'user' to roles collection");
-      });
-
-      new Role({
-        name: "moderator"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'moderator' to roles collection");
-      });
-
-      new Role({
-        name: "admin"
-      }).save(err => {
-        if (err) {
-          console.log("error", err);
-        }
-
-        console.log("added 'admin' to roles collection");
-      });
-    }
-  });
-}
