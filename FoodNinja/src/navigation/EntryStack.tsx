@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 
-import {useAuth} from '../contexts/AuthContext';
+import {useAuth} from '../contexts/GlobalContext';
 import Splash from '../screens/Splash';
 import AppStack  from './AppStack';
 import AuthStack from './Authstack';

@@ -7,6 +7,7 @@ import {
   Pressable,
   Alert,
   TouchableOpacity,
+  useColorScheme
 } from 'react-native';
 import React, {useState} from 'react';
 import {height, width} from '../../utilities/Dimensions';
@@ -14,14 +15,26 @@ import CustomInput from '../../components/CustomInput';
 import {TextInput} from 'react-native-paper';
 import CustomButton from '../../components/CustomButton';
 import {AppThemeColor} from '../../utilities/colors';
+import { useAuth } from '../../contexts/GlobalContext';
 
 export default function Login({navigation}) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const colorScheme = useColorScheme();
+
+  const auth = useAuth()
+  const {colors, theme} = useAuth();
+  console.log("28 ",colors, theme);
+  
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: colors?.BackgroundColor}]}>
       <Image source={require('../../assets/Logo.png')} style={styles.img} />
+
+<Text onPress={() => auth.changeTheme('dark')} style={{color: colors?.textColor}}>Change dark Theme</Text>
+<Text onPress={() => auth.changeTheme('light')} style={{color: colors?.textColor}}>Change light Theme</Text>
+
 
       <View style={styles.btn}>
         <CustomInput
@@ -36,7 +49,7 @@ export default function Login({navigation}) {
         />
 
         <Text
-          style={{fontSize: 16, fontWeight: '600', color: '#000', margin: 10}}>
+          style={{fontSize: 16, fontWeight: '600', color: colors?.textColor, margin: 10}}>
           Or Continue With
         </Text>
 
@@ -72,7 +85,7 @@ export default function Login({navigation}) {
           <CustomButton title="Create Account" onPress={() => navigation.navigate('signup')} size={0.4} />
         </View>
 
-        <Text style={{fontSize: 16, fontWeight: '700', color: '#000'}}>Don't want to create account?  <Text onPress={() => {}} style={{fontSize: 18, fontWeight: '700', color: AppThemeColor, textDecorationLine: 'underline', }}> Skip! </Text></Text>
+        <Text style={{fontSize: 16, fontWeight: '700', color: colors?.textColor}}>Don't want to create account?  <Text onPress={() => {}} style={{fontSize: 18, fontWeight: '700', color: AppThemeColor, textDecorationLine: 'underline', }}> Skip! </Text></Text>
       </View>
     </SafeAreaView>
   );
@@ -83,6 +96,7 @@ const styles = StyleSheet.create({
     width: width,
     height: height,
     alignItems: 'center',
+
   },
   img: {
     width: width * 0.55,

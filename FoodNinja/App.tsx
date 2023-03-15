@@ -1,15 +1,13 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { AuthProvider } from './src/contexts/AuthContext';
+import { GlobalProvider } from './src/contexts/GlobalContext';
 import Router from './src/navigation/EntryStack';
 
 export default function App(){
   return (
-    <AuthProvider> 
+    <GlobalProvider> 
       <StatusBar backgroundColor={'#fff'} barStyle="dark-content"/>
       <Router />
-    </AuthProvider>
+    </GlobalProvider>
   );
 };
-
- App;
