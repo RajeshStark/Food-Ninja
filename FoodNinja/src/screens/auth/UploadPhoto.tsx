@@ -12,7 +12,7 @@ import {width, height} from '../../utilities/Dimensions';
 import CustomButton from '../../components/CustomButton';
 import { useAuth } from '../../contexts/GlobalContext';
 
-export default function UploadPhoto({navigation}) {
+export default function UploadPhoto({navigation} : {navigation : any}) {
   const {colors} = useAuth();
   
   return (
@@ -31,14 +31,14 @@ export default function UploadPhoto({navigation}) {
         profile for security
       </Text>
 
-      <TouchableOpacity style={styles.touchable}>
+      <TouchableOpacity style={[styles.touchable, {backgroundColor:colors?.cardBackground}]}>
         <Image
           source={require('../../assets/GalleryIcon.png')}
           style={styles.img}
         />
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.touchable}>
+      <TouchableOpacity style={[styles.touchable, {backgroundColor:colors?.cardBackground}]}>
         <Image
           source={require('../../assets/CameraIcon.png')}
           style={styles.img}
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   touchable: {
     width: width * 0.9,
     height: 140,
-    backgroundColor: '#fff',
     alignSelf: 'center',
     margin: 20,
     alignItems: 'center',

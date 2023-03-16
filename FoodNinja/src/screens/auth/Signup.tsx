@@ -7,7 +7,7 @@ import CustomButton from '../../components/CustomButton';
 import {AppThemeColor} from '../../utilities/colors';
 import { useAuth } from '../../contexts/GlobalContext';
 
-export default function Signup({navigation}) {
+export default function Signup({navigation} : {navigation : any}) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

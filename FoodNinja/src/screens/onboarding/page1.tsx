@@ -3,7 +3,7 @@ import React from 'react';
 import {height, width} from '../../utilities/Dimensions';
 import CustomButton from '../../components/CustomButton';
 
-export default function Page1({navigation}) {
+export default function Page1({navigation} : {navigation : any}) {
   return (
     <SafeAreaView style={styles.container}>
       <Image

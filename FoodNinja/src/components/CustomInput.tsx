@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TextInput } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 import { width } from '../utilities/Dimensions';
+import { useAuth } from '../contexts/GlobalContext';
 
 type props = {
     label: string;
@@ -12,19 +13,23 @@ type props = {
 }
 
 const CustomInput = ({label, value, onChangeText, right, left} : props) => {
-
+   const {colors} = useAuth()
   return (
     <TextInput
       placeholder={label}
       value={value}
       onChangeText={onChangeText}
-      style={styles.txtinput}
+      style={[styles.txtinput, { color: colors?.textColor, backgroundColor:colors?.cardBackground }]}
       mode={'outlined'}
-      outlineStyle={styles.outline}
+      outlineStyle={{
+        borderColor: colors?.cardBackground,
+        borderRadius: 20
+    }}
       textColor={'grey'}
-      cursorColor={'#fff'}
+      cursorColor={colors?.cardBackground}
       right={right}
       left={left}
+      theme={{ colors: { text: colors?.textColor } }}
     />
   );
 };
@@ -40,8 +45,4 @@ const styles = StyleSheet.create({
         
     },
 
-    outline:{
-        borderColor: '#fff',
-        borderRadius: 20
-    }
 })

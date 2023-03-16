@@ -17,7 +17,7 @@ import CustomButton from '../../components/CustomButton';
 import {AppThemeColor} from '../../utilities/colors';
 import { useAuth } from '../../contexts/GlobalContext';
 
-export default function Login({navigation}) {
+export default function Login({navigation} : {navigation : any}) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,6 +33,7 @@ export default function Login({navigation}) {
 
 <Text onPress={() => auth.changeTheme('dark')} style={{color: colors?.textColor}}>Change dark Theme</Text>
 <Text onPress={() => auth.changeTheme('light')} style={{color: colors?.textColor}}>Change light Theme</Text>
+<Text onPress={() => auth.changeTheme('system default')} style={{color: colors?.textColor}}>Change system default</Text>
 
 
       <View style={styles.btn}>

@@ -6,21 +6,33 @@ import {useAuth} from '../contexts/GlobalContext';
 import Splash from '../screens/Splash';
 import AppStack  from './AppStack';
 import AuthStack from './Authstack';
-import { StatusBar } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 
 const Router = () => {
   const {authData, loading, theme} = useAuth();
-
+  const selected = useColorScheme();
+  
   if (loading) {
     return <Splash />;
   }
   return (
     <NavigationContainer>
       {
-        theme == 'light' ?
-        <StatusBar backgroundColor={'#fff'} barStyle="dark-content"/>
-        :
-        <StatusBar backgroundColor={'#000'} barStyle="light-content"/>
+       theme === "system default" ?
+(
+  selected === 'light' ? 
+  <StatusBar backgroundColor={'#fff'} barStyle="dark-content"/>
+  :
+  <StatusBar backgroundColor={'#000'} barStyle="light-content"/>
+)
+:
+(
+  theme === 'light' ? 
+  <StatusBar backgroundColor={'#fff'} barStyle="dark-content"/>
+  :
+  <StatusBar backgroundColor={'#000'} barStyle="light-content"/>
+)
+        
       }
    
       {authData ? <AppStack /> : <AuthStack/>}
