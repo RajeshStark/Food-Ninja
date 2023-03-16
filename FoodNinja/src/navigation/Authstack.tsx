@@ -5,6 +5,7 @@ import Signup from '../screens/auth/Signup';
 import Page1 from '../screens/onboarding/page1';
 import Page2 from '../screens/onboarding/page2';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import UploadPhoto from '../screens/auth/UploadPhoto';
 
 
 const Stack = createNativeStackNavigator();
@@ -39,6 +40,7 @@ const AuthStack = () => {
       <Stack.Screen name="signup" component={Signup} />
       <Stack.Screen name="page1" component={Page1} />
       <Stack.Screen name="page2" component={Page2} />
+      <Stack.Screen name="uploadphoto" component={UploadPhoto} />
     </Stack.Navigator>
   );
 };

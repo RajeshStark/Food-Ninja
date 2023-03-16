@@ -81,10 +81,8 @@ const changeTheme = async(theme : string) => {
   setTheme(theme);
   if(theme == 'light'){
     setColors(light)
-    console.log("light")
   } else{
     setColors(dark)
-    console.log("dark")
   }
   AsyncStorage.setItem('@Theme', theme);
 }

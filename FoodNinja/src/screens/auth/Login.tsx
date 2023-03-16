@@ -24,8 +24,7 @@ export default function Login({navigation}) {
   const colorScheme = useColorScheme();
 
   const auth = useAuth()
-  const {colors, theme} = useAuth();
-  console.log("28 ",colors, theme);
+  const {colors} = useAuth();
   
 
   return (
