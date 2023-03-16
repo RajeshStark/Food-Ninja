@@ -25,19 +25,6 @@ type GlobalContextData = {
   colors?: ColorsData;
 };
 
-// const light = {
-//   AppThemeColor: '#4AE188',
-//   BackgroundColor : "#FEFEFF",
-//   textColor: '#09051C'
-// }
-
-// const dark = {
-//   AppThemeColor : '#4AE188',
-//   BackgroundColor : "#0D1E15",
-//   textColor : '#FFFFFF'
-// }
-//Create the Auth Context with the data type specified
-//and a empty object
 const GlobalContext = createContext<GlobalContextData>({} as GlobalContextData);
 
 const GlobalProvider: React.FC = ({children}) => {

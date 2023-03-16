@@ -2,7 +2,7 @@ export const AppThemeColor = "#4AE188"
 
 const light = {
     AppThemeColor: '#4AE188',
-    BackgroundColor : "#FEFEFF",
+    BackgroundColor : "#FAF9F6",
     textColor: '#09051C'
   }
   

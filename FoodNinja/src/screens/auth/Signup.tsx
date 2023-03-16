@@ -5,15 +5,17 @@ import CustomInput from '../../components/CustomInput';
 import {Checkbox, TextInput} from 'react-native-paper';
 import CustomButton from '../../components/CustomButton';
 import {AppThemeColor} from '../../utilities/colors';
+import { useAuth } from '../../contexts/GlobalContext';
 
 export default function Signup({navigation}) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = useState(true);
+  const {colors} = useAuth();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: colors?.BackgroundColor}]}>
       <Image source={require('../../assets/Logo.png')} style={styles.img} />
 
       <View style={styles.btn}>
@@ -42,7 +44,7 @@ export default function Signup({navigation}) {
           <CustomButton title="Create Account" onPress={() => navigation.navigate('uploadphoto')} size={0.45} />
         </View>
 
-        <Text style={{fontSize: 16, fontWeight: '700', color: '#000'}}>
+        <Text style={{fontSize: 16, fontWeight: '700', color: colors?.textColor}}>
           Don't want to create account?{' '}
           <Text
             onPress={() => {}}
@@ -65,6 +67,7 @@ const styles = StyleSheet.create({
     width: width,
     height: height,
     alignItems: 'center',
+
   },
   img: {
     width: width * 0.55,
